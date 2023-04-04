@@ -1,5 +1,5 @@
 .card {
-  background-color: $white;
+  background-color: theme('colors.white');
   margin: 0 auto;
   max-width: 500px;
   padding: 2rem 4.5rem;
@@ -11,14 +11,13 @@
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 20px;
-    color: $secondary;
+    color: theme('colors.secondary');
   }
 
   &__subtitle {
     font-size: 1rem;
     font-weight: 400;
     margin-bottom: 20px;
-    color: $gray-200;
+    // color: $gray-200;
   }
 }
-
