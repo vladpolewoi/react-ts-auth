@@ -2,20 +2,21 @@
   @apply relative;
 
   &__field {
-    @apply w-full px-6 py-4 text-sm;
-    @apply rounded-md border border-gray-100;
+    @apply w-full px-6 py-3;
+    @apply rounded-xl border border-gray-300;
     @apply text-secondary;
     transition: 0.1s;
 
     &:focus {
-      @apply rounded-sm border border-primary;
+      @apply rounded-md border border-primary;
       @apply outline-none;
     }
 
     &:focus ~ .MInput__label,
-    &:not(:focus):valid ~ .MInput__label {
-      @apply bg-white px-2 text-xs;
-      top: -6px;
+    &:not(:focus):not(:placeholder-shown) ~ .MInput__label {
+      @apply bg-white px-1;
+      display: block;
+      transform: scale(0.75) translateY(-31px);
     }
 
     &:focus ~ .MInput__label {
@@ -24,9 +25,8 @@
   }
 
   &__label {
-    @apply absolute text-gray-200;
+    @apply absolute left-6 top-3 text-gray-300;
+    transition-property: transform;
     transition: 0.1s;
-    top: calc(0.75rem + 2px);
-    left: calc(1rem + 2px);
   }
 }

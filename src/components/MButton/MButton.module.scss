@@ -1,23 +1,16 @@
-// .MButton {
-//   width: 100%;
-//   border-radius: 7px;
-//   font-size: 1rem;
-//   font-weight: 700;
-//   border: none;
-//   transition: 0.1s;
+.MButton {
+  @apply w-full rounded-lg px-4 py-3  font-bold;
+  transition: 0.1s;
 
-//   &:hover {
-//     cursor: pointer;
-//     border: none;
-//     background-color: lighten($secondary, 10%);
-//   }
+  &:hover {
+    @apply cursor-pointer bg-primary;
+  }
 
-//   &:focus {
-//     outline: none;
-//   }
+  &:focus {
+    @apply outline-none;
+  }
 
-//   &--primary {
-//     background-color: $secondary;
-//     color: $white;
-//   }
-// }
+  &--primary {
+    @apply bg-secondary text-white;
+  }
+}

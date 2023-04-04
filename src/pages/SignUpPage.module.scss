@@ -1,0 +1,18 @@
+.card {
+  @apply mx-auto rounded-2xl bg-white  px-16 py-10 text-center;
+  max-width: 500px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
+
+  &__title {
+    @apply mb-4 text-3xl font-bold text-secondary;
+  }
+
+  &__subtitle {
+    @apply mb-4  text-gray-500;
+  }
+}
+
+.line {
+  @apply w-full bg-gray-200;
+  height: 1px;
+}
