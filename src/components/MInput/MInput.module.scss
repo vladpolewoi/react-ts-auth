@@ -2,7 +2,7 @@
   @apply relative;
 
   &__field {
-    @apply w-full px-6 py-3;
+    @apply w-full py-3 pl-6 pr-8;
     @apply rounded-xl border border-gray-300;
     @apply text-secondary;
     transition: 0.1s;
@@ -16,7 +16,7 @@
     &:not(:focus):not(:placeholder-shown) ~ .MInput__label {
       @apply bg-white px-1;
       display: block;
-      transform: scale(0.75) translateY(-31px);
+      transform: scale(0.75) translate(-15px, -31px);
     }
 
     &:focus ~ .MInput__label {
@@ -28,5 +28,13 @@
     @apply absolute left-6 top-3 text-gray-300;
     transition-property: transform;
     transition: 0.1s;
+  }
+
+  &__icon {
+    @apply absolute right-3 top-4 h-5 w-5;
+    @apply cursor-pointer;
+    svg {
+      @apply h-full w-full;
+    }
   }
 }
