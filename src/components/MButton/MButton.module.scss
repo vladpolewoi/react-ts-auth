@@ -13,4 +13,11 @@
   &--primary {
     @apply bg-secondary text-white;
   }
+
+  &--disabled {
+    @apply bg-gray-300;
+    &:hover {
+      @apply cursor-not-allowed bg-gray-300;
+    }
+  }
 }

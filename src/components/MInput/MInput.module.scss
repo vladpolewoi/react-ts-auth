@@ -22,12 +22,24 @@
     &:focus ~ .MInput__label {
       @apply text-primary;
     }
+
+    &--invalid {
+      @apply border-red-400;
+    }
   }
 
   &__label {
-    @apply absolute left-6 top-3 text-gray-300;
+    @apply pointer-events-none absolute left-6 top-3 text-gray-300;
     transition-property: transform;
     transition: 0.1s;
+
+    &--required {
+      &::after {
+        @apply inline-block text-xs;
+        content: '*';
+        transform: translateY(-5px);
+      }
+    }
   }
 
   &__icon {
@@ -36,5 +48,10 @@
     svg {
       @apply h-full w-full;
     }
+  }
+
+  &__validation {
+    @apply absolute left-4 text-xs text-red-400;
+    bottom: -15px;
   }
 }
