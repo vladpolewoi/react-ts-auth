@@ -1,14 +1,23 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import styles from './MInput.module.scss'
 import { IconType } from 'react-icons'
+import MTooltip from '@/components/MTooltip/MTooltip'
+import ValidationGuide from './ValidationGuide'
+
 type MInputProps = {
+  name: string
   type?: 'text' | 'password' | 'email'
   value?: string
   placeholder?: string
+  autofocus?: boolean
   className?: string
   required?: boolean
   icon?: IconType | (() => JSX.Element)
   validationMessage?: string
+  validationGuide?: {
+    title: string
+    isValid: boolean
+  }[]
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void
   onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void
@@ -16,43 +25,50 @@ type MInputProps = {
 }
 
 export default function MInput({
+  name,
   type = 'text',
   value,
   placeholder,
+  autofocus,
   className,
   required,
   icon: Icon,
   validationMessage,
+  validationGuide,
   onChange,
   onBlur,
   onFocus,
   onIconClick,
 }: MInputProps) {
-  // const [showValidation, setIsValid] = useState<boolean>(true)
-  // const [validationMessage, setValidationMessage] = useState<string>('')
-  // const validate = (v: string) => {
-  //   if (required && v === '') {
-  //     return `${placeholder} field is required`
-  //   }
+  const inputRef = useRef<HTMLInputElement>(null)
+  const [isFocused, setIsFocused] = useState(false)
+  const [showValidationGuide, setShowValidationGuide] = useState(false)
 
-  //   const validationMessage = validation?.(v)
+  // Effects
+  useEffect(() => {
+    if (isFocused && validationGuide && !showValidationGuide) {
+      setShowValidationGuide(true)
+    } else if (!isFocused && showValidationGuide) {
+      setShowValidationGuide(false)
+    }
+  }, [isFocused, validationGuide])
 
-  //   return validationMessage || false
-  // }
+  useEffect(() => {
+    if (autofocus && inputRef.current) {
+      inputRef.current.focus()
+    }
+  }, [])
 
   // Events
-  // const onBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-  //   if (required || validation) {
-  //     const message = validate(e.target.value)
-  //     if (message) {
-  //       setValidationMessage(message)
-  //     }
-  //   }
-  // }
+  const onBlurHandle = (e: React.FocusEvent<HTMLInputElement>) => {
+    onBlur?.(e)
+    setIsFocused(false)
+  }
 
-  // const onFocus = () => {
-  //   setValidationMessage('')
-  // }
+  const onFocusHandle = (e: React.FocusEvent<HTMLInputElement>) => {
+    onFocus?.(e)
+    setIsFocused(true)
+  }
 
   const onIconClickLocal = (e: React.MouseEvent<HTMLSpanElement>) => {
     e.preventDefault()
@@ -61,7 +77,7 @@ export default function MInput({
 
   // JSX elements
   const InputIcon = Icon && (
-    <button className={styles.MInput__icon} onClick={onIconClickLocal}>
+    <button className={styles.MInput__icon} onClick={onIconClickLocal} tabIndex={-1}>
       <Icon className="fill-gray-500" />
     </button>
   )
@@ -75,20 +91,26 @@ export default function MInput({
     </label>
   )
 
+  const tooltip = validationGuide && <ValidationGuide rules={validationGuide} />
+
   return (
     <div className={`${styles.MInput} ${className}`}>
-      <input
-        type={type}
-        className={`${styles.MInput__field} ${
-          validationMessage ? styles['MInput__field--invalid'] : ''
-        }`}
-        placeholder=" "
-        value={value}
-        onChange={onChange}
-        onBlur={onBlur}
-        onFocus={onFocus}
-        required={required}
-      />
+      <MTooltip content={tooltip} show={showValidationGuide}>
+        <input
+          type={type}
+          className={`${styles.MInput__field} ${
+            validationMessage ? styles['MInput__field--invalid'] : ''
+          }`}
+          placeholder=" "
+          ref={inputRef}
+          value={value}
+          onChange={onChange}
+          onBlur={onBlurHandle}
+          onFocus={onFocusHandle}
+          required={required}
+          name={name}
+        />
+      </MTooltip>
       {InputIcon}
       {InputPlaceholder}
       {validationMessage && (

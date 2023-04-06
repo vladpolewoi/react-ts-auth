@@ -1,5 +1,5 @@
 import MButton from '@/components/MButton/MButton'
-import SignUpForm from '@/components/SignUpForm'
+import SignUpForm from '@/components/SignUpForm/SignUpForm'
 import styles from './SignUpPage.module.scss'
 
 export default function SignUpPage() {
