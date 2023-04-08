@@ -3,7 +3,7 @@
   transition: 0.1s;
 
   &:hover {
-    @apply cursor-pointer bg-primary;
+    @apply cursor-pointer opacity-90;
   }
 
   &:focus {
@@ -11,6 +11,10 @@
   }
 
   &--primary {
+    @apply bg-primary text-white;
+  }
+
+  &--secondary {
     @apply bg-secondary text-white;
   }
 

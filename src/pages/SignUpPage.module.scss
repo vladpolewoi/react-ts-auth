@@ -4,11 +4,11 @@
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
 
   &__title {
-    @apply mb-4 text-3xl font-bold text-secondary;
+    @apply mb-4 text-3xl font-bold text-headline;
   }
 
   &__subtitle {
-    @apply mb-4 font-light text-gray-500;
+    @apply mb-4 font-light text-paragraph;
   }
 }
 

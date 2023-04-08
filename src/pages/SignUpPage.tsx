@@ -13,7 +13,7 @@ export default function SignUpPage() {
         <SignUpForm />
         <div className="mt-2 flex justify-center">
           <p className="mr-2 font-light text-gray-500">Already have an account?</p>
-          <a className="text-primary hover:underline" href="#s">
+          <a className="text-link hover:underline" href="#s">
             Log In
           </a>
         </div>
@@ -22,10 +22,10 @@ export default function SignUpPage() {
           <p className="mx-2 text-gray-500">or</p>
           <div className={styles.line}></div>
         </div>
-        <MButton text="Sign up with google" />
+        <MButton text="Sign up with google" type="secondary" />
         <p className="mt-6 text-sm font-light text-gray-500">
           By signing up to create an account I accept Company&apos;s{' '}
-          <a className="text-sm text-primary hover:underline" href="#s">
+          <a className="text-sm text-link hover:underline" href="#s">
             Terms of Use and Privacy Policy
           </a>
           .

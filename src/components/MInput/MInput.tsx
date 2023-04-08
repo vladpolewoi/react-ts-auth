@@ -22,6 +22,9 @@ type MInputProps = {
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void
   onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void
   onIconClick?: (e: React.MouseEvent<HTMLSpanElement>) => void
+  onFocusedChanged?: (isFocused: boolean) => void
+  onKeyUp?: (e: React.KeyboardEvent<HTMLInputElement>) => void
+  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void
 }
 
 export default function MInput({
@@ -39,6 +42,9 @@ export default function MInput({
   onBlur,
   onFocus,
   onIconClick,
+  onFocusedChanged,
+  onKeyUp,
+  onKeyDown,
 }: MInputProps) {
   const inputRef = useRef<HTMLInputElement>(null)
   const [isFocused, setIsFocused] = useState(false)
@@ -58,6 +64,10 @@ export default function MInput({
       inputRef.current.focus()
     }
   }, [])
+
+  useEffect(() => {
+    onFocusedChanged?.(isFocused)
+  }, [isFocused])
 
   // Events
   const onBlurHandle = (e: React.FocusEvent<HTMLInputElement>) => {
@@ -104,11 +114,13 @@ export default function MInput({
           placeholder=" "
           ref={inputRef}
           value={value}
+          required={required}
+          name={name}
           onChange={onChange}
           onBlur={onBlurHandle}
           onFocus={onFocusHandle}
-          required={required}
-          name={name}
+          onKeyUp={onKeyUp}
+          onKeyDown={onKeyDown}
         />
       </MTooltip>
       {InputIcon}

@@ -17,14 +17,14 @@ export default function ValidationGuide({ rules }: ValidationGuideProps) {
         <li key={rule.title} className="my-2 flex items-center text-sm text-secondary">
           {rule.isValid ? (
             <>
-              <MdOutlineRadioButtonChecked className="h-4 w-4 fill-emerald-400" />
+              <MdOutlineRadioButtonChecked className="h-4 w-4 fill-success" />
               <span className="ml-2 whitespace-nowrap text-gray-300 line-through">
                 {rule.title}
               </span>
             </>
           ) : (
             <>
-              <MdOutlineRadioButtonUnchecked className="h-4 w-4 fill-red-400" />
+              <MdOutlineRadioButtonUnchecked className="h-4 w-4 fill-danger" />
               <span className="ml-2 whitespace-nowrap">{rule.title}</span>
             </>
           )}

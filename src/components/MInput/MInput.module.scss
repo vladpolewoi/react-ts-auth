@@ -24,7 +24,7 @@
     }
 
     &--invalid {
-      @apply border-red-400;
+      @apply border-danger;
     }
   }
 
@@ -51,7 +51,7 @@
   }
 
   &__validation {
-    @apply absolute left-4 text-xs text-red-400;
+    @apply absolute left-4 text-xs text-danger;
     bottom: -15px;
   }
 }
