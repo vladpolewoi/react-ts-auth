@@ -1,9 +1,10 @@
 .MButton {
   @apply w-full rounded-lg px-4 py-3  font-bold;
-  transition: 0.1s;
+  @apply flex items-center justify-center;
+  transition: 0.2s;
 
   &:hover {
-    @apply cursor-pointer opacity-90;
+    @apply cursor-pointer;
   }
 
   &:focus {
@@ -12,10 +13,18 @@
 
   &--primary {
     @apply bg-primary text-white;
+
+    &:hover {
+      @apply bg-primary-dark;
+    }
   }
 
   &--secondary {
-    @apply bg-secondary text-white;
+    @apply border-2 border-secondary bg-white text-secondary;
+
+    &:hover {
+      @apply bg-secondary text-white;
+    }
   }
 
   &--disabled {

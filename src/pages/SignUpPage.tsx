@@ -2,6 +2,8 @@ import MButton from '@/components/MButton/MButton'
 import SignUpForm from '@/components/SignUpForm/SignUpForm'
 import styles from './SignUpPage.module.scss'
 
+import { FcGoogle } from 'react-icons/fc'
+
 export default function SignUpPage() {
   return (
     <div className="container m-auto flex h-screen items-center">
@@ -22,7 +24,7 @@ export default function SignUpPage() {
           <p className="mx-2 text-gray-500">or</p>
           <div className={styles.line}></div>
         </div>
-        <MButton text="Sign up with google" type="secondary" />
+        <MButton text="Sign up with google" type="secondary" icon={FcGoogle} />
         <p className="mt-6 text-sm font-light text-gray-500">
           By signing up to create an account I accept Company&apos;s{' '}
           <a className="text-sm text-link hover:underline" href="#s">

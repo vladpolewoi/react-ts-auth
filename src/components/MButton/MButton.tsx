@@ -1,9 +1,11 @@
+import { IconType } from 'react-icons'
 import styles from './MButton.module.scss'
 
 type MButtonProps = {
   text: string
   type?: 'primary' | 'secondary' | 'tertiary'
   disabled?: boolean
+  icon?: IconType | (() => JSX.Element)
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 
@@ -11,6 +13,7 @@ export default function MButton({
   text,
   onClick,
   type = 'primary',
+  icon: Icon,
   disabled,
 }: MButtonProps) {
   // TODO: find better approach then list classes in string
@@ -18,6 +21,7 @@ export default function MButton({
   // const classes = `${styles.MButton} ${styles['MButton--' + type]} ${
   //   disabled ? styles['MButton--disabled'] : ''
   // }}`
+  // this approach is not good because in html you can't see which classes are applied
   const classes = Object.entries({
     [styles.MButton]: true,
     [styles[`MButton--${type}`]]: true,
@@ -31,7 +35,7 @@ export default function MButton({
     }, [] as string[])
     .join(' ')
 
-  const onClickLocal = (e: React.MouseEvent<HTMLButtonElement>) => {
+  function onClickLocal(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault()
 
     if (!disabled) {
@@ -39,8 +43,11 @@ export default function MButton({
     }
   }
 
+  const iconElement = Icon && <Icon className="mr-2 h-6 w-6" />
+
   return (
     <button className={classes} onClick={onClickLocal}>
+      {iconElement}
       {text}
     </button>
   )
