@@ -5,33 +5,37 @@
     @apply w-full py-3 pl-6 pr-8;
     @apply rounded-xl border border-gray-300;
     @apply text-secondary;
-    transition: 0.1s;
+    @apply dark:border-gray-700 dark:bg-d-background-2 dark:text-d-headline;
 
     &:focus {
       @apply rounded-md border border-primary;
+      @apply dark:border-d-primary;
       @apply outline-none;
+      transition: 0.1s;
     }
 
     &:focus ~ .MInput__label,
     &:not(:focus):not(:placeholder-shown) ~ .MInput__label {
       @apply bg-white px-1;
+      @apply dark:bg-d-background-2;
       display: block;
       transform: scale(0.75) translate(-15px, -31px);
     }
 
     &:focus ~ .MInput__label {
       @apply text-primary;
+      @apply dark:text-d-primary;
     }
 
     &--invalid {
-      @apply border-danger;
+      @apply border-danger dark:border-danger;
     }
   }
 
   &__label {
     @apply pointer-events-none absolute left-6 top-3 text-gray-300;
-    transition-property: transform;
-    transition: 0.1s;
+    @apply dark:bg-d-background-2;
+    transition: transform 0.1s;
 
     &--required {
       &::after {

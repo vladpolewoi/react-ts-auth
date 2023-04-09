@@ -1,0 +1,21 @@
+.ThemeToggle {
+  @apply absolute right-4 top-4 h-10 w-10;
+  @apply flex  items-center justify-center rounded-lg;
+
+  &:hover {
+    @apply cursor-pointer bg-d-background;
+    @apply dark:bg-background;
+    transition: 0.3s;
+
+    svg {
+      @apply fill-d-headline;
+      @apply dark:fill-headline;
+    }
+  }
+
+  &__icon {
+    @apply h-5 w-5;
+    @apply fill-paragraph;
+    @apply dark:fill-d-paragraph;
+  }
+}

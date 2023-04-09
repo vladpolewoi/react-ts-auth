@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { createClient, Session } from '@supabase/supabase-js'
 import SignUpPage from '@/pages/SignUpPage'
+import ThemeToggle from '@/components/ThemeToggle/ThemeToggle'
+import { ThemeProvider } from '@/contexts/ThemeContext'
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const supabaseKey = import.meta.env.VITE_SUPABASE_KEY
@@ -25,10 +27,15 @@ export default function App() {
   }, [])
 
   if (!session) {
-    return <SignUpPage />
+    return (
+      <ThemeProvider>
+        <ThemeToggle />
+        <div className="dark:bg-d-background">
+          <SignUpPage />
+        </div>
+      </ThemeProvider>
+    )
   }
-
-  console.log('NOT LOGGED IN', session)
 
   return <div>Logged in!</div>
 }
