@@ -30,9 +30,7 @@ export default function App() {
     return (
       <ThemeProvider>
         <ThemeToggle />
-        <div className="dark:bg-d-background">
-          <SignUpPage />
-        </div>
+        <SignUpPage />
       </ThemeProvider>
     )
   }

@@ -1,3 +1,48 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: 32 172 137;
+    --color-primary-300: 44 202 169;
+    --color-primary-700: 26 140 111;
+    --color-secondary: 41 61 69;
+    --color-base: 255 255 254;
+    --color-base-400: 255 255 255;
+    --color-base-800: 49 49 49;
+    --color-info: 20 163 222;
+    --color-success: 32 172 137;
+    --color-warning: 247 142 22;
+    --color-danger: 247 72 102;
+    --color-accent: 236 126 247;
+    --color-neutral: 196 196 196;
+  }
+
+  :root[class='dark'] {
+    --color-primary: 127 90 240;
+    --color-primary-300: 161 141 248;
+    --color-primary-700: 107 74 216;
+    --color-secondary: 41 61 69;
+    --color-base: 22 22 26;
+    --color-base-400: 36 38 41;
+
+    --color-base-800: 49 49 49;
+    --color-info: 20 163 222;
+    --color-success: 32 172 137;
+    --color-warning: 247 142 22;
+    --color-danger: 247 72 102;
+    --color-accent: 236 126 247;
+    --color-neutral: 196 196 196;
+  }
+}
+
+body {
+  @apply bg-base;
+}
+// lighten(#fffffe, 10%)  = #ffffff rgb(255, 255, 255)
+// darken(#20ac89, 20%) = #1a8c6f rgb(26, 140, 111)
+//242629 to rgb(36, 38, 41)
+//c4c4c4 to rgb(196, 196, 196)
+//313131 to rgb(49, 49, 49)
+//lighten(rgb( 22 22 26), 10%)= #16161a rgb(22, 22, 26)

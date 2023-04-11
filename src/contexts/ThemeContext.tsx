@@ -24,6 +24,12 @@ export const ThemeProvider = ({ children }: ThemeContextTypeProps) => {
 
   useEffect(() => {
     localStorage.setItem('theme', theme)
+
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
   }, [theme])
 
   function toggleTheme() {
@@ -32,7 +38,7 @@ export const ThemeProvider = ({ children }: ThemeContextTypeProps) => {
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <div className={theme === 'dark' ? 'dark' : ''}>{children}</div>
+      {children}
     </ThemeContext.Provider>
   )
 }

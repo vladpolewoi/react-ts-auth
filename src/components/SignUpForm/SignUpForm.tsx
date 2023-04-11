@@ -28,7 +28,7 @@ export default function SignUpForm() {
   }
 
   const CapsLockIcon = isPasswordFocused && isCapsLockOn && (
-    <BsFillCapslockFill className="absolute -left-7 top-4 z-10 mr-2 h-5 w-5 fill-primary dark:fill-d-primary" />
+    <BsFillCapslockFill className="absolute -left-7 top-4 z-10 mr-2 h-5 w-5 fill-primary" />
   )
 
   return (

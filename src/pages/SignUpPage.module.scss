@@ -1,22 +1,20 @@
 .card {
-  @apply mx-auto rounded-2xl bg-white  px-16 py-10 text-center;
-  @apply dark:bg-d-background-2;
+  @apply mx-auto rounded-2xl bg-base-400 px-16 py-10 text-center;
   max-width: 500px;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
 
   &__title {
-    @apply mb-4 text-3xl font-bold text-headline;
-    @apply dark:text-d-headline;
+    @apply mb-4 text-3xl font-bold text-base-800;
+    @apply dark:text-white;
   }
 
   &__subtitle {
-    @apply mb-4 font-light text-paragraph;
-    @apply text-d-paragraph;
+    @apply mb-4 font-light text-neutral;
+    @apply dark:text-gray-600;
   }
 }
 
 .line {
-  @apply w-full bg-gray-200;
-  @apply bg-gray-600;
+  @apply w-full bg-gray-200 dark:bg-gray-600;
   height: 1px;
 }

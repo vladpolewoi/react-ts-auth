@@ -13,16 +13,14 @@
 
   &--primary {
     @apply bg-primary text-white;
-    @apply dark:bg-d-primary dark:text-d-headline;
     &:hover {
-      @apply bg-primary-dark;
-      @apply dark:bg-d-primary-dark;
+      @apply bg-primary-700;
     }
   }
 
   &--secondary {
-    @apply border-2 border-secondary bg-white text-secondary;
-    @apply dark:border-d-secondary dark:bg-d-background-2 dark:text-d-secondary dark:text-white;
+    @apply border-2 border-secondary bg-base-400 text-secondary;
+    @apply dark:text-white;
     &:hover {
       @apply bg-secondary text-white;
     }
