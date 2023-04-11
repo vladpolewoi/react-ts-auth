@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 
 type validationRule = {
   title: string
@@ -20,8 +20,7 @@ type hookProps = {
 export default function useForm({ validation, defaultValues = {} }: hookProps) {
   const [values, setValues] = useState<{ [key: string]: string }>(defaultValues)
   const [errors, setErrors] = useState<{ [key: string]: validationError }>({})
-  // TODO: implement isValid
-  const isValid = true
+  const isValid = useMemo(() => Object.values(errors).every((v) => v.isValid), [errors])
 
   function getFieldValidationErrors(name: string, value: string) {
     if (validation?.[name]) {
@@ -33,7 +32,7 @@ export default function useForm({ validation, defaultValues = {} }: hookProps) {
       const firstInvalidRule = rules?.find((v) => !v.isValid)
 
       return {
-        isValid: !!firstInvalidRule,
+        isValid: !firstInvalidRule,
         message: firstInvalidRule?.title || '',
         rules,
       }

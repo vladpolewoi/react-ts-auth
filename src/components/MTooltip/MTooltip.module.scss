@@ -1,11 +1,13 @@
 .MTooltip {
-  @apply absolute z-10 ml-4 inline-block border bg-white p-2;
+  @apply absolute z-10 ml-4 inline-block border bg-base-400 p-2;
   @apply rounded-md shadow-lg;
+  @apply dark:border-gray-600;
 
   &::before {
     @apply absolute block h-3 w-3;
     @apply rounded-sm border-b border-l;
-    @apply border-gray-200 bg-white;
+    @apply border-gray-200 bg-base-400;
+    @apply dark:border-gray-600;
     content: '';
     transform: translate(-15px, 4px) rotate(45deg);
   }
