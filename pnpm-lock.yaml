@@ -20,6 +20,7 @@ specifiers:
   react-dom: ^18.2.0
   react-icons: ^4.8.0
   react-is: ^18.2.0
+  react-router-dom: ^6.10.0
   sass: ^1.60.0
   string-hash: ^1.1.3
   tailwindcss: ^3.3.1
@@ -40,6 +41,7 @@ dependencies:
   react-dom: 18.2.0_react@18.2.0
   react-icons: 4.8.0_react@18.2.0
   react-is: 18.2.0
+  react-router-dom: 6.10.0_biqbaboplfbrettd7655fr4n2y
   string-hash: 1.1.3
   url: 0.11.0
 
@@ -599,6 +601,11 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
+
+  /@remix-run/router/1.5.0:
+    resolution: {integrity: sha512-bkUDCp8o1MvFO+qxkODcbhSqRa6P2GXgrGZVpt0dCXNW2HCSCqYI0ZoAqEOSAjRWmmlKcYgFvN4B4S+zo/f8kg==}
+    engines: {node: '>=14'}
+    dev: false
 
   /@supabase/functions-js/2.1.0:
     resolution: {integrity: sha512-vRziB+AqRXRaGHjEFHwBo0kuNDTuAxI7VUeqU24Fe86ISoD8YEQm0dGdpleJEcqgDGWaO6pxT1tfj1BRY5PwMg==}
@@ -2655,6 +2662,29 @@ packages:
     resolution: {integrity: sha512-wViHqhAd8OHeLS/IRMJjTSDHF3U9eWi62F/MledQGPdJGDhodXJ9PBLNGr6WWL7qlH12Mt3TyTpbS+hGXMjCzQ==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /react-router-dom/6.10.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-E5dfxRPuXKJqzwSe/qGcqdwa18QiWC6f3H3cWXM24qj4N0/beCIf/CWTipop2xm7mR0RCS99NnaqPNjHtrAzCg==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      react: '>=16.8'
+      react-dom: '>=16.8'
+    dependencies:
+      '@remix-run/router': 1.5.0
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      react-router: 6.10.0_react@18.2.0
+    dev: false
+
+  /react-router/6.10.0_react@18.2.0:
+    resolution: {integrity: sha512-Nrg0BWpQqrC3ZFFkyewrflCud9dio9ME3ojHCF/WLsprJVzkq3q3UeEhMCAW1dobjeGbWgjNn/PVF6m46ANxXQ==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      react: '>=16.8'
+    dependencies:
+      '@remix-run/router': 1.5.0
+      react: 18.2.0
+    dev: false
 
   /react/18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}

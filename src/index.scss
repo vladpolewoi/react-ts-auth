@@ -39,6 +39,7 @@
 
 body {
   @apply bg-base;
+  @apply dark:text-white;
 }
 // lighten(#fffffe, 10%)  = #ffffff rgb(255, 255, 255)
 // darken(#20ac89, 20%) = #1a8c6f rgb(26, 140, 111)

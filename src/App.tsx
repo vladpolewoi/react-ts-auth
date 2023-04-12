@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react'
 import { Session } from '@supabase/supabase-js'
 import SignUpPage from '@/pages/SignUpPage'
-import ThemeToggle from '@/components/ThemeToggle/ThemeToggle'
-import { ThemeProvider } from '@/contexts/ThemeContext'
+import HomePage from './pages/HomePage'
+import LoginPage from './pages/LoginPage'
+import ErrorPage from './pages/ErrorPage'
+import NotFoundPage from './pages/NotFoundPage'
 import Supabase from '@/supabase/client'
+import { Link, Routes, Route } from 'react-router-dom'
+import AuthGuard from './guards/AuthGuard'
 
 export default function App() {
   // const [session, setSession] = useState<Session | null>(null)
@@ -24,9 +28,34 @@ export default function App() {
   // }, [])
 
   return (
-    <ThemeProvider>
-      <ThemeToggle />
-      <SignUpPage />
-    </ThemeProvider>
+    <>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/sign-up">Sign Up</Link>
+          </li>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+        </ul>
+      </nav>
+      <Routes>
+        <Route
+          path="/"
+          errorElement={<ErrorPage />}
+          element={
+            <AuthGuard>
+              <HomePage />
+            </AuthGuard>
+          }
+        />
+        <Route path="/sign-up" element={<SignUpPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </>
   )
 }
