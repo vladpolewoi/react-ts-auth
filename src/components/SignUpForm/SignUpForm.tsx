@@ -54,7 +54,7 @@ export default function SignUpForm() {
         onChange={onFormChange}
       />
       <MInput
-        className="my-6"
+        className="my-7"
         type="email"
         name="email"
         value={values.email || ''}

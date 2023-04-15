@@ -19,7 +19,7 @@
   }
 
   &--secondary {
-    @apply border-2 border-secondary bg-base-400 text-secondary;
+    @apply border-2 border-secondary bg-transparent text-secondary;
     @apply dark:text-white;
     &:hover {
       @apply bg-secondary text-white;
@@ -27,7 +27,7 @@
   }
 
   &--disabled {
-    @apply bg-gray-300;
+    @apply bg-gray-300 opacity-80;
     &:hover {
       @apply cursor-not-allowed bg-gray-300;
     }

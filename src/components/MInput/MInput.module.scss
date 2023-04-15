@@ -4,7 +4,7 @@
   &__field {
     @apply w-full py-3 pl-6 pr-8;
     @apply rounded-xl border border-gray-300;
-    @apply bg-base-400 text-secondary;
+    @apply bg-transparent text-secondary;
     @apply dark:text-white;
     &:focus {
       @apply rounded-md border border-primary;
@@ -14,9 +14,9 @@
 
     &:focus ~ .MInput__label,
     &:not(:focus):not(:placeholder-shown) ~ .MInput__label {
-      @apply bg-base-400 px-1;
+      @apply bg-transparent px-1;
       display: block;
-      transform: scale(0.75) translate(-15px, -31px);
+      transform: scale(0.75) translate(-20px, -45px);
     }
 
     &:focus ~ .MInput__label {
@@ -30,7 +30,7 @@
 
   &__label {
     @apply pointer-events-none absolute left-6 top-3 text-gray-300;
-    @apply bg-base-400;
+    @apply bg-transparent;
     transition: transform 0.1s;
 
     &--required {
@@ -51,7 +51,7 @@
   }
 
   &__validation {
-    @apply absolute left-4 text-xs text-danger;
-    bottom: -15px;
+    @apply absolute right-2 text-xs text-danger;
+    bottom: -17px;
   }
 }

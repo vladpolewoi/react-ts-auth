@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  :root[class='dark'] .glass {
+    @apply border border-gray-500/50 bg-base/90 shadow-md;
+    backdrop-filter: blur(2px);
+  }
+
+  .navLink {
+    @apply text-lg font-bold text-neutral dark:text-gray-600;
+    transition: 0.2s;
+
+    &:hover {
+      @apply text-primary;
+    }
+
+    &.active {
+      @apply cursor-default text-primary underline;
+    }
+  }
+}
+
 @layer base {
   :root {
     --color-primary: 32 172 137;
@@ -37,13 +57,22 @@
   }
 }
 
-body {
+html {
   @apply bg-base;
   @apply dark:text-white;
 }
-// lighten(#fffffe, 10%)  = #ffffff rgb(255, 255, 255)
-// darken(#20ac89, 20%) = #1a8c6f rgb(26, 140, 111)
-//242629 to rgb(36, 38, 41)
-//c4c4c4 to rgb(196, 196, 196)
-//313131 to rgb(49, 49, 49)
-//lighten(rgb( 22 22 26), 10%)= #16161a rgb(22, 22, 26)
+
+body {
+  @apply min-h-screen;
+}
+
+.backgroundPattern {
+  background: url('./assets/bg_light.png') repeat;
+  background-size: 20rem;
+  transition: background-image 0.3s ease-out;
+}
+
+:root[class='dark'] .backgroundPattern {
+  background: url('./assets/bg_dark.png') repeat;
+  background-size: 23rem;
+}

@@ -1,0 +1,7 @@
+.logo {
+  @apply h-12 w-12 fill-neutral;
+
+  path {
+    stroke: theme('colors.neutral');
+  }
+}

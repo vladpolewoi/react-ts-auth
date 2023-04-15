@@ -24,7 +24,8 @@
     "react-is": "^18.2.0",
     "react-router-dom": "^6.10.0",
     "string-hash": "^1.1.3",
-    "url": "^0.11.0"
+    "url": "^0.11.0",
+    "vite-plugin-svgr": "^2.4.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
