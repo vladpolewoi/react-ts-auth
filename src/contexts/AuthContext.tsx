@@ -1,10 +1,12 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
+import supabase from '@/supabase/client'
+import { User, Session } from '@supabase/supabase-js'
 
 type AuthContextData = {
-  user: string
-  signIn: (email: string, password: string) => Promise<any>
-  signUp: (email: string, password: string) => Promise<any>
-  signOut: () => Promise<any>
+  user: User | null
+  session: Session | null
+  loginWithGithub: () => Promise<any>
+  logout: () => Promise<any>
 }
 type AuthProviderProps = {
   children: React.ReactNode
@@ -13,40 +15,41 @@ type AuthProviderProps = {
 const AuthContext = createContext({} as AuthContextData)
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [user, setUser] = useState('')
+  const [user, setUser] = useState<User | null>(null)
+  const [session, setSession] = useState<Session | null>(null)
 
-  function signIn(email: string, password: string) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (password !== '123456') {
-          reject('Invalid password')
-        }
-        setUser(email)
-        resolve('Success')
-      }, 2000)
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session }, error }) => {
+      setSession(session)
+      setUser(session?.user ?? null)
+
+      if (error) {
+        console.error('ERR', error)
+      }
+    })
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session)
+      setUser(session?.user ?? null)
+    })
+
+    return () => subscription.unsubscribe()
+  }, [])
+
+  async function loginWithGithub() {
+    return supabase.auth.signInWithOAuth({
+      provider: 'github',
     })
   }
 
-  function signUp(email: string, password: string) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        setUser(email)
-        resolve('')
-      }, 2000)
-    })
-  }
-
-  function signOut() {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        setUser('')
-        resolve('')
-      }, 2000)
-    })
+  async function logout() {
+    return supabase.auth.signOut()
   }
 
   return (
-    <AuthContext.Provider value={{ user, signIn, signUp, signOut }}>
+    <AuthContext.Provider value={{ user, session, logout, loginWithGithub }}>
       {children}
     </AuthContext.Provider>
   )

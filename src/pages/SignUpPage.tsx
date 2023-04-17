@@ -5,6 +5,7 @@ import styles from './SignUpPage.module.scss'
 
 import { FcGoogle } from 'react-icons/fc'
 import { BsGithub } from 'react-icons/bs'
+
 export default function SignUpPage() {
   async function signInWithGithub() {
     console.log('Sign in with Github')

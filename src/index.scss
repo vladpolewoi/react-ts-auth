@@ -7,19 +7,6 @@
     @apply border border-gray-500/50 bg-base/90 shadow-md;
     backdrop-filter: blur(2px);
   }
-
-  .navLink {
-    @apply text-lg font-bold text-neutral dark:text-gray-600;
-    transition: 0.2s;
-
-    &:hover {
-      @apply text-primary;
-    }
-
-    &.active {
-      @apply cursor-default text-primary underline;
-    }
-  }
 }
 
 @layer base {

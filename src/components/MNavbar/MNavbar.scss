@@ -1,0 +1,51 @@
+.navigation {
+  @apply glass fixed left-0 top-0 z-10 flex flex-col items-center border-none bg-base-400 p-2;
+  @apply rounded-br-lg;
+}
+
+.logo {
+  @apply h-6 w-8 fill-neutral;
+
+  path {
+    stroke: theme('colors.neutral');
+  }
+}
+
+.list {
+  @apply flex w-full flex-col justify-center pl-5;
+}
+
+.dot {
+  @apply mr-2 inline-block h-2 w-2 rounded-md bg-primary;
+  @apply absolute left-3;
+  transition: top cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.3s;
+}
+
+.animate {
+  animation: dot 0.3s cubic-bezier(0.215, 0.61, 0.355, 1) 1;
+}
+
+@keyframes dot {
+  0% {
+    transform: scaleY(1);
+  }
+  95% {
+    transform: scaleY(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.navLink {
+  @apply text-lg font-bold text-neutral dark:text-gray-600;
+
+  &:hover {
+    @apply text-primary;
+    transition: 0.3s;
+  }
+
+  &.active {
+    @apply cursor-default text-primary;
+  }
+}
