@@ -8,7 +8,7 @@ export default function MText({ children, type, className }: MTextProps) {
   switch (type) {
     case 'heading':
       return (
-        <h1 className={`text-3xl font-bold text-base-800 dark:text-white ${className}`}>
+        <h1 className={`text-3xl font-bold text-base-800 dark:text-white ${className || ''}`}>
           {children}
         </h1>
       )

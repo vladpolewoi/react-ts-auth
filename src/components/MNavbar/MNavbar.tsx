@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { MLink, MButton } from '@/components'
 import { NavLink, useLocation, Link } from 'react-router-dom'
 import ThemeToggle from '@/components/ThemeToggle/ThemeToggle'
+import UserAvatar from '@/components/UserAvatar'
 import { ReactComponent as Logo } from '@/assets/logo.svg'
 import { useAuth } from '@/contexts/AuthContext'
 import './MNavbar.scss'
@@ -28,8 +29,6 @@ export default function MNavbar() {
   const [index, setIndex] = useState(
     routes.findIndex((route) => route.path === location.pathname),
   )
-
-  console.log(user)
 
   useEffect(() => {
     const index = routes.findIndex((route) => route.path === location.pathname)
@@ -72,6 +71,7 @@ export default function MNavbar() {
       <ThemeToggle />
       <MButton onClick={onLogOut} text="Log out" />
       {user ? <p className="text-success">IN</p> : <p className="text-danger">OUT</p>}
+      {user && <UserAvatar user={user}/>}
     </nav>
   )
 }
