@@ -8,6 +8,7 @@ import HomePage from '@/pages/HomePage'
 import LoginPage from '@/pages/LoginPage'
 import ErrorPage from '@/pages/ErrorPage'
 import NotFoundPage from '@/pages/NotFoundPage'
+import SecretPage from '@/pages/SecretPage'
 
 import AuthGuard from '@/guards/AuthGuard'
 
@@ -27,6 +28,15 @@ export default function App() {
           element={
             <AuthGuard>
               <HomePage />
+            </AuthGuard>
+          }
+        />
+        <Route
+          path="/secret"
+          errorElement={<ErrorPage />}
+          element={
+            <AuthGuard>
+              <SecretPage />
             </AuthGuard>
           }
         />

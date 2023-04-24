@@ -1,0 +1,53 @@
+.navigation {
+  // @apply glass  border-none bg-base-400 p-2;
+  // @apply rounded-br-lg;
+
+  &__left {
+    @apply glass fixed left-0 top-0 z-10 flex border-none bg-base-400 p-2;
+    @apply rounded-br-lg;
+  }
+
+  &__right {
+    @apply glass fixed right-0 top-0 z-10 flex items-center border-none bg-base-400 px-4 py-2;
+    @apply rounded-bl-lg;
+  }
+
+  &__link {
+    @apply text-lg font-bold text-neutral dark:text-gray-600;
+
+    &:hover {
+      @apply text-primary;
+      transition: 0.3s;
+    }
+
+    &.active {
+      @apply cursor-default text-primary;
+    }
+  }
+
+  &__list {
+    @apply flex w-full flex-col justify-center pl-5;
+  }
+}
+
+.dot {
+  @apply mr-2 inline-block h-2 w-2 rounded-md bg-primary;
+  @apply absolute left-3;
+  transition: top cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.3s;
+}
+
+.animate {
+  animation: dot 0.3s cubic-bezier(0.215, 0.61, 0.355, 1) 1;
+}
+
+@keyframes dot {
+  0% {
+    transform: scaleY(1);
+  }
+  95% {
+    transform: scaleY(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

@@ -1,16 +1,20 @@
 import { useState, useRef, useEffect } from 'react'
 import { MLink, MButton } from '@/components'
-import { NavLink, useLocation, Link } from 'react-router-dom'
+import { NavLink, useLocation, Link, useNavigate } from 'react-router-dom'
 import ThemeToggle from '@/components/ThemeToggle/ThemeToggle'
 import UserAvatar from '@/components/UserAvatar'
-import { ReactComponent as Logo } from '@/assets/logo.svg'
 import { useAuth } from '@/contexts/AuthContext'
-import './MNavbar.scss'
+import { MdLogout } from 'react-icons/md'
+import styles from './MNavbar.module.scss'
 
 const routes = [
   {
     path: '/',
     name: 'Home',
+  },
+  {
+    path: '/secret',
+    name: 'Secret',
   },
   {
     path: '/sign-up',
@@ -24,6 +28,7 @@ const routes = [
 
 export default function MNavbar() {
   const { user, logout } = useAuth()
+  const navigate = useNavigate()
   const location = useLocation()
   const dotRef = useRef<HTMLDivElement>(null)
   const [index, setIndex] = useState(
@@ -35,43 +40,62 @@ export default function MNavbar() {
     setIndex(index)
 
     if (dotRef.current) {
-      dotRef.current.classList.remove('animate')
+      dotRef.current.classList.remove(styles.animate)
       setTimeout(() => {
-        dotRef?.current?.classList.add('animate')
+        dotRef?.current?.classList.add(styles.animate)
       }, 0)
     }
   }, [location.pathname])
 
   async function onLogOut() {
     const { error } = await logout()
+    navigate('/')
     console.log('Log out: ', error)
   }
 
   return (
-    <nav className="navigation">
-      {/* <img src="/src/assets/logo_2.png" alt="logo" className="h-16 w-16" /> */}
-      {/* <Link to="/">
-        <Logo className="logo" />
-      </Link> */}
+    <nav className={styles.navigation}>
+      <div className={styles.navigation__left}>
+        <div
+          ref={dotRef}
+          className={`${styles.dot} ${index && styles.animate}`}
+          style={{ top: `${18 + index * 28}px` }}
+        ></div>
+        <ul className={styles.navigation__list}>
+          {routes.map((route) => (
+            <li key={route.path}>
+              <NavLink to={route.path} className={styles.navigation__link}>
+                {route.name}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-      <div
-        ref={dotRef}
-        className={`dot ${index && 'animate'}`}
-        style={{ top: `${18 + index * 28}px` }}
-      ></div>
-      <ul className="list">
-        {routes.map((route) => (
-          <li key={route.path}>
-            <NavLink to={route.path} className="navLink">
-              {route.name}
+      <div className={styles.navigation__right}>
+        <ThemeToggle className="mr-2" />
+        {user ? (
+          <>
+            <UserAvatar user={user} />
+            <button
+              onClick={onLogOut}
+              className="ml-2 flex h-10 w-10 items-center justify-center rounded-md transition-colors hover:bg-primary-300"
+            >
+              <MdLogout className="h-6 w-6 fill-secondary" />
+            </button>
+          </>
+        ) : (
+          <>
+            <NavLink to="/login" className={`${styles.navigation__link} ml-4`}>
+              Login
             </NavLink>
-          </li>
-        ))}
-      </ul>
-      <ThemeToggle />
-      <MButton onClick={onLogOut} text="Log out" />
-      {user ? <p className="text-success">IN</p> : <p className="text-danger">OUT</p>}
-      {user && <UserAvatar user={user}/>}
+            <div className="mx-4 h-5 w-[3px] rounded-sm bg-neutral"></div>
+            <NavLink to="/sign-up" className={styles.navigation__link}>
+              Sign Up
+            </NavLink>
+          </>
+        )}
+      </div>
     </nav>
   )
 }

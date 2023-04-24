@@ -1,9 +1,9 @@
 import { MText } from '@/components'
 
-export default function NotFoundPage() {
+export default function SecretPage() {
   return (
     <div className="container mx-auto flex justify-center pt-6">
-      <MText type="heading">Not Found</MText>
+      <MText type="heading">42</MText>
     </div>
   )
 }

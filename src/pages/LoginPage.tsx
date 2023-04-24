@@ -8,8 +8,7 @@ export default function LoginPage() {
 
   async function signInWithGithub() {
     console.log('Sign in with Github')
-    const res = await loginWithGithub()
-    console.log(res)
+    await loginWithGithub()
   }
 
   return (

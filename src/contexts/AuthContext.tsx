@@ -41,6 +41,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   async function loginWithGithub() {
     return supabase.auth.signInWithOAuth({
       provider: 'github',
+      options: {
+        redirectTo: 'http://localhost:5173',
+      },
     })
   }
 

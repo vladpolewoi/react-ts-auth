@@ -16,7 +16,7 @@ export const ThemeProvider = ({ children }: ThemeContextTypeProps) => {
   const localStorageTheme = localStorage.getItem('theme')
   const isBrowserDefaultLight = window.matchMedia('(prefers-color-scheme: light)').matches
 
-  if (localStorageTheme !== 'dark' || isBrowserDefaultLight) {
+  if ((localStorageTheme !== 'dark' && isBrowserDefaultLight) || localStorageTheme === 'light') {
     defaultTheme = 'light'
   }
 
